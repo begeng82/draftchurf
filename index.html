@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHURF ARCHIVE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0e0e0e;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND GRAIN */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events:none;
+}
+
+header{
+    text-align:center;
+    padding:60px 20px 40px;
+    animation:fadeDown 1.2s ease;
+}
+
+header h1{
+    font-family:'Playfair Display',serif;
+    font-size:3rem;
+    letter-spacing:6px;
+}
+
+header p{
+    margin-top:12px;
+    color:#aaa;
+    letter-spacing:1px;
+}
+
+@keyframes fadeDown{
+    from{opacity:0;transform:translateY(-30px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+/* GALLERY */
+.gallery{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:18px;
+}
+
+.gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:14px;
+    cursor:pointer;
+    opacity:0;
+    transform:scale(0.95);
+    animation:fadeUp 0.8s ease forwards;
+}
+
+/* HOVER CAPTION */
+.gallery img::after{
+    content:attr(data-title);
+    position:absolute;
+    bottom:15px;
+    left:15px;
+    right:15px;
+    color:#fff;
+    font-size:.85rem;
+    letter-spacing:1px;
+    opacity:0;
+}
+
+
+.gallery img:nth-child(1){animation-delay:.1s}
+.gallery img:nth-child(2){animation-delay:.2s}
+.gallery img:nth-child(3){animation-delay:.3s}
+.gallery img:nth-child(4){animation-delay:.4s}
+.gallery img:nth-child(5){animation-delay:.5s}
+
+@keyframes fadeUp{
+    to{opacity:1;transform:scale(1)}
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+    filter:brightness(1.1);
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+.modal-content{
+    text-align:center;
+    animation:zoomIn .4s ease;
+}
+
+@keyframes zoomIn{
+    from{transform:scale(.8);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+.modal-content img{
+    max-width:90vw;
+    max-height:70vh;
+    border-radius:12px;
+}
+
+.modal-content h2{
+    margin-top:15px;
+    font-family:'Playfair Display',serif;
+    letter-spacing:2px;
+}
+
+.modal-content p{
+    margin-top:6px;
+    font-size:.9rem;
+    color:#bbb;
+}
+
+.close{
+    position:absolute;
+    top:30px;
+    right:40px;
+    font-size:34px;
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:40px 10px 30px;
+    color:#666;
+    font-size:.8rem;
+    letter-spacing:1px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>CHURF ARCHIVE</h1>
+    <p>A quiet place for visual memories</p>
+    <p style="margin-top:18px;font-size:.85rem;color:#777;max-width:520px;margin-inline:auto;line-height:1.6;">
+        This is a meaning of the journey — has its own meaning about life 
+        a collection of moments, light, silence, and frag
+    </p>
+</header>
+
+<section class="gallery">
+    <img src="foto/guest/1.jpg" onclick="openModal(this)" data-title="Arsip" data-desc="Tak untuk dilupakan">
+    <img src="foto/guest/2.jpg" onclick="openModal(this)" data-title="Jalan" data-desc="Langkah yang pernah ada">
+    <img src="foto/guest/3.jpg" onclick="openModal(this)" data-title="Kini" data-desc="Sudah berbeda">
+    <img src="foto/guest/4.jpg" onclick="openModal(this)" data-title="Angin" data-desc="Membawa yang tertinggal">
+</section>
+<section class="gallery">
+    <img src="foto/guest/5.jpg" onclick="openModal(this)" data-title="Ruang" data-desc="Waktu yang diam">
+    <img src="foto/guest/6.jpg" onclick="openModal(this)" data-title="Langit" data-desc="Diam melihat segalanya">
+    <img src="foto/guest/7.jpg" onclick="openModal(this)" data-title="Nama" data-desc="Masih disebut pelan">
+    <img src="foto/guest/8.jpg" onclick="openModal(this)" data-title="Lintasan" data-desc="Yang tak diulang">
+</section>
+<section class="gallery">
+    <img src="foto/guest/9.jpg" onclick="openModal(this)" data-title="Langkah" data-desc="Pelan tapi berarti">
+    <img src="foto/guest/10.jpg" onclick="openModal(this)" data-title="Tanah" data-desc="Menyimpan jejak">
+    <img src="foto/guest/11.jpg" onclick="openModal(this)" data-title="Kala" data-desc="Tak menoleh">
+    <img src="foto/guest/12.jpg" onclick="openModal(this)" data-title="Cahaya" data-desc="Sinar di balik gelap">
+</section>
+
+<div class="modal" id="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <img id="modalImg">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+    </div>
+</div>
+
+<footer>
+    &copy; Copyright 2025 mfauzanjdn • begeng
+</footer>
+
+<script>
+function openModal(img){
+    document.getElementById('modal').style.display='flex';
+    document.getElementById('modalImg').src=img.src;
+    document.getElementById('modalTitle').innerText=img.dataset.title || '';
+    document.getElementById('modalDesc').innerText=img.dataset.desc || '';
+}
+function closeModal(){
+    document.getElementById('modal').style.display='none';
+}
+</script>
+
+</body>
+</html>
